@@ -1,0 +1,40 @@
+{
+    "profile": {
+      "title": "Profile Settings",
+      "user_info": "User Info",
+      "company_info": "Company Info",
+      "billing": "Billing",
+      "security": "Security",
+      "notifications": "Notifications",
+      "user_information": "User Information",
+      "company_information": "Company Information",
+      "billing_subscription": "Billing & Subscription",
+      "security_settings": "Security Settings",
+      "notifications_settings": "Notifications",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "company": "Company",
+      "role": "Role",
+      "payment_method": "Payment Method",
+      "change_password": "Change Password",
+      "two_factor_auth": "Two-Factor Authentication",
+      "email_notifications": "Email Notifications",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "save_changes": "Save Changes"
+    },
+    "sidebar": {
+    "dashboard": "Dashboard",
+    "invoices": "Invoices",
+    "clients": "Clients",
+    "subscription": "Subscription",
+    "sales": "Sales",
+    "support": "Support",
+    "settings": "Settings",
+    "select_language": "Language"
+  
+  }
+
+}
+  

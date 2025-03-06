@@ -1,0 +1,40 @@
+{
+    "profile": {
+      "title": "إعدادات الملف الشخصي",
+      "user_info": "معلومات المستخدم",
+      "company_info": "معلومات الشركة",
+      "billing": "الفواتير",
+      "security": "الأمان",
+      "notifications": "الإشعارات",
+      "user_information": "معلومات المستخدم",
+      "company_information": "معلومات الشركة",
+      "billing_subscription": "الفواتير والاشتراك",
+      "security_settings": "إعدادات الأمان",
+      "notifications_settings": "الإشعارات",
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف",
+      "company": "الشركة",
+      "role": "الدور",
+      "payment_method": "طريقة الدفع",
+      "change_password": "تغيير كلمة المرور",
+      "two_factor_auth": "المصادقة الثنائية",
+      "email_notifications": "إشعارات البريد الإلكتروني",
+      "enabled": "مفعل",
+      "disabled": "معطل",
+      "save_changes": "حفظ التغييرات"
+    },
+    "sidebar": {
+          "dashboard": "لوحة التحكم",
+          "invoices": "الفواتير",
+          "clients": "العملاء",
+          "subscription": "الاشتراك",
+          "sales": "المبيعات",
+          "support": "الدعم",
+          "settings": "الإعدادات",
+          "select_language": "اللغة"
+        }
+      
+      
+  }
+  

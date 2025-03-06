@@ -1,0 +1,74 @@
+@use "sass:color"; 
+
+// Colors
+$primary-color: #4a90e2;
+$background-color: #ffffff;
+$text-color: #333;
+$hover-color: color.adjust($primary-color, $lightness: -10%);
+$border-radius: 8px;
+
+.navbar {
+  background: $background-color;
+  padding: 15px 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: $primary-color;
+    display: flex;
+    align-items: center;
+
+    .logo-icon {
+      margin-right: 8px;
+      font-size: 24px;
+    }
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+
+    li {
+      a {
+        text-decoration: none;
+        color: $text-color;
+        font-weight: 500;
+        transition: color 0.3s;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid $primary-color;
+    }
+
+    .user-name {
+      font-size: 14px;
+      font-weight: bold;
+      color: $text-color;
+    }
+  }
+}
