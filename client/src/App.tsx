@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
-import { useTranslation } from "react-i18next"; // Import translation hook
+//import { useTranslation } from "react-i18next"; // Import translation hook
 import LoginForm from "./Pages/Login/Login";
 import { Home } from "./Pages/Home/Home";
 import Profile from "./Pages/Profile/Profile";
@@ -13,7 +13,7 @@ const queryClient = new QueryClient();
 // 🏠 Layout with Sidebar (for main pages)
 const MainLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const { i18n } = useTranslation(); // Get translation functions
+  //const { i18n } = useTranslation(); // Get translation functions
 
   return (
     <QueryClientProvider client={queryClient}>
