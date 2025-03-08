@@ -1,0 +1,92 @@
+@use "sass:color";
+
+$primary-color: #4a90e2;
+$background-color: #f4f7fc;
+$text-color: #333;
+$input-border: #ccc;
+$border-radius: 10px;
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $background-color;
+
+  .signup-box {
+    background: white;
+    padding: 30px;
+    border-radius: $border-radius;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+
+    h2 {
+      color: $primary-color;
+      font-size: 24px;
+    }
+
+    .input-group {
+      text-align: left;
+      margin-top: 15px;
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid $input-border;
+        border-radius: $border-radius;
+        outline: none;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+          border-color: $primary-color;
+          box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+        }
+      }
+    }
+
+    .error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .signup-btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      background: $primary-color;
+      color: white;
+      border: none;
+      border-radius: $border-radius;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background 0.3s;
+
+      &:hover {
+        background: color.adjust($primary-color, $lightness: -10%);
+      }
+    }
+
+    .redirect-text {
+      margin-top: 15px;
+      font-size: 14px;
+
+      a {
+        color: $primary-color;
+        text-decoration: none;
+        font-weight: bold;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

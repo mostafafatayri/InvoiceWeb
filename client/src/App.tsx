@@ -7,6 +7,7 @@ import { Home } from "./Pages/Home/Home";
 import Profile from "./Pages/Profile/Profile";
 import Sidebar from "./Components/SideBar/Sidebar";
 import Dashboard from "./Pages/Dashboard/DashBoard";
+import SignUp from "./Pages/Login/Sign";
 
 const queryClient = new QueryClient();
 
@@ -48,13 +49,21 @@ const router = createBrowserRouter([
       { path: "/home", element: <Home /> },
       { path: "/profile", element: <Profile /> },
       { path: "/Dashboard", element: <Dashboard /> }
+
     ],
   },
   {
     path: "/login",
     element: <AuthLayout />, // No Sidebar
     children: [{ index: true, element: <LoginForm /> }],
+    
   },
+  {
+    path: "/SignUp",
+    element: <AuthLayout />, // No Sidebar
+    children: [{ index: true, element: <SignUp /> }],
+    
+  }
 ]);
 
 function App() {

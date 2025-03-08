@@ -1,6 +1,6 @@
 import React from "react";
 import "./Login.scss";
-
+import { Link } from "react-router-dom";
 const Login: React.FC = () => {
   return (
     <div className="login-container">
@@ -23,7 +23,7 @@ const Login: React.FC = () => {
         </form>
 
         <p className="register-link">
-          Don't have an account? <a href="#">Sign up</a>
+          Don't have an account? <Link to="/SignUp">Sign up</Link>
         </p>
       </div>
     </div>
