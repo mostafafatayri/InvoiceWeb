@@ -22,7 +22,7 @@ $sidebar-width-closed: 80px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;
-  flex-direction: column; // Arrange items in a column
+  flex-direction: column;
 
   &.closed {
     width: $sidebar-width-closed;
@@ -67,7 +67,7 @@ $sidebar-width-closed: 80px;
     list-style: none;
     padding: 0;
     margin: 0;
-    flex-grow: 1; // Pushes the language selector to the bottom
+    flex-grow: 1;
 
     li {
       margin: 10px 0;
@@ -80,14 +80,37 @@ $sidebar-width-closed: 80px;
         color: $text-color;
         padding: 12px 20px;
         transition: 0.3s;
+        border-radius: 8px;
 
         &:hover {
           background-color: $hover-color;
+          color: white;
         }
 
         .icon {
           font-size: $icon-size;
           margin-right: 15px;
+        }
+      }
+
+      // Specific fix for React Router Links
+      .sidebar-link {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 12px 20px;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+
+        &:hover {
+          background-color: $hover-color;
+          color: white;
+        }
+
+        span {
+          flex-grow: 1;
         }
       }
     }
@@ -98,7 +121,7 @@ $sidebar-width-closed: 80px;
     align-items: center;
     gap: 8px;
     padding: 10px;
-    margin-top: auto; // Pushes it to the bottom
+    margin-top: auto;
     background: white;
     border-radius: 8px;
     cursor: pointer;
@@ -119,6 +142,7 @@ $sidebar-width-closed: 80px;
     }
   }
 }
+
 // 🟢 Language Selector - Improved Design
 .language-selector {
   position: absolute;
@@ -151,7 +175,7 @@ $sidebar-width-closed: 80px;
     cursor: pointer;
     background: transparent;
     outline: none;
-    flex-grow: 1; // Ensures the select takes the remaining space
+    flex-grow: 1;
   }
 }
 
@@ -162,7 +186,7 @@ $sidebar-width-closed: 80px;
     padding: 10px;
 
     select {
-      display: none; // Hide text when sidebar is closed
+      display: none;
     }
   }
 }

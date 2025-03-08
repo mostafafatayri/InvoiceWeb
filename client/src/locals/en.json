@@ -34,7 +34,101 @@
     "settings": "Settings",
     "select_language": "Language"
   
-  }
+  },
+  "admin": {
+    "subscription": {
+      "title": "Subscriber Management",
+      "description": "Manage all subscribed users in the system.",
+      "search_placeholder": "Search subscribers...",
+      "table": {
+        "id": "ID",
+        "name": "Name",
+        "email": "Email",
+        "plan": "Plan",
+        "status": "Status",
+        "next_billing": "Next Billing Date",
+        "actions": "Actions"
+      },
+      "status": {
+        "active": "Active",
+        "pending": "Pending",
+        "canceled": "Canceled"
+      },
+      "buttons": {
+        "manage": "Manage"
+      }
+    }
+  },
+
+  "subscription": {
+    "title": "Choose Your Plan",
+    "subtitle": "Select the best plan that fits your business needs.",
+    "plans": {
+      "basic": {
+        "name": "Basic",
+        "price": "$9.99/month",
+        "features": [
+          "Access to basic features",
+          "5 invoices per month",
+          "Email support",
+          "No custom branding",
+          "No priority support"
+        ]
+      },
+      "pro": {
+        "name": "Pro",
+        "price": "$19.99/month",
+        "features": [
+          "Unlimited invoices",
+          "Custom branding",
+          "Email & Chat support",
+          "Analytics & Reports",
+          "Priority customer service"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "$49.99/month",
+        "features": [
+          "Everything in Pro",
+          "Team collaboration",
+          "API Access",
+          "Dedicated account manager",
+          "Advanced security features"
+        ]
+      }
+    },
+    "mostPopular": "Most Popular",
+    "subscribe": "Subscribe"
+  },
+
+    "invoices": {
+      "title": "Invoices",
+      "searchPlaceholder": "Search by client, invoice number...",
+      "filter": "Filter",
+      "newInvoice": "New Invoice",
+      "invoiceNo": "Invoice No.",
+      "client": "Client",
+      "date": "Date",
+      "dueDate": "Due Date",
+      "amount": "Amount",
+      "status": {
+        "paid": "Paid",
+        "pending": "Pending",
+        "overdue": "Overdue"
+      },
+      "actions": "Actions"
+    }
+    
+
+
+  
+
 
 }
+
+
+
+
+
   

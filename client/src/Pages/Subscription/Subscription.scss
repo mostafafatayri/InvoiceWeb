@@ -1,0 +1,118 @@
+@use "sass:color";
+
+// Theme Colors
+$primary-color: #4a90e2;
+$background-color: #f4f7fc;
+$text-color: #333;
+$border-radius: 10px;
+
+.subscription-page {
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+  margin-left: 250px; // Default when sidebar is open
+
+  @media (max-width: 768px) {
+    margin-left: 80px; // Adjust when sidebar is collapsed
+  }
+
+  &.expanded {
+    margin-left: 80px; // When sidebar is collapsed
+  }
+
+  h2 {
+    font-size: 28px;
+    color: $primary-color;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 16px;
+    color: $text-color;
+    margin-bottom: 20px;
+  }
+
+  .plans-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    .plan-card {
+      background: white;
+      padding: 20px;
+      border-radius: $border-radius;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 300px;
+      position: relative;
+
+      &.highlighted {
+        border: 2px solid $primary-color;
+      }
+
+      .recommended {
+        background: $primary-color;
+        color: white;
+        font-size: 12px;
+        padding: 5px 10px;
+        border-radius: 20px;
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      h3 {
+        font-size: 22px;
+        margin-bottom: 5px;
+      }
+
+      h4 {
+        font-size: 18px;
+        color: $primary-color;
+        margin-bottom: 15px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+
+        li {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-size: 14px;
+          margin-bottom: 8px;
+
+          .check-icon {
+            color: green;
+          }
+
+          .cross-icon {
+            color: red;
+          }
+        }
+      }
+
+      .subscribe-btn {
+        width: 100%;
+        padding: 12px;
+        background: $primary-color;
+        color: white;
+        border: none;
+        border-radius: $border-radius;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 15px;
+        transition: background 0.3s;
+
+        &:hover {
+          background: color.adjust($primary-color, $lightness: -10%);
+        }
+      }
+    }
+  }
+}

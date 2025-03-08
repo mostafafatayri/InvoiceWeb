@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next"; // Import translation hook
 import { FaHome, FaFileInvoice, FaUsers, FaCog, FaBars, FaTimes, FaCommentDots, FaCreditCard, FaChartBar, FaGlobe } from "react-icons/fa";
 import "./Sidebar.scss";
+import { Link } from "react-router-dom";
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -31,29 +32,33 @@ const Sidebar: React.FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
       {/* Sidebar Menu */}
       <ul className="menu">
         <li>
-          <a href="#">
+        <Link to="/Dashboard" className="sidebar-link">
             <FaHome className="icon" />
             {isSidebarOpen && <span>{t("sidebar.dashboard")}</span>}
-          </a>
+          
+          </Link>
         </li>
         <li>
-          <a href="#">
+          <Link to="/admin/subscribers" className="sidebar-link">
             <FaFileInvoice className="icon" />
             {isSidebarOpen && <span>{t("sidebar.invoices")}</span>}
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">
+        <Link to="/admin/subscribers" className="sidebar-link">
             <FaUsers className="icon" />
             {isSidebarOpen && <span>{t("sidebar.clients")}</span>}
-          </a>
+        </Link>
         </li>
+        
         <li>
-          <a href="#">
-            <FaCreditCard className="icon" />
-            {isSidebarOpen && <span>{t("sidebar.subscription")}</span>}
-          </a>
-        </li>
+             <Link to="/subscriptions" className="sidebar-link">
+             <FaCreditCard className="icon" />
+             {isSidebarOpen && <span>{t("sidebar.subscription")}</span>}
+             </Link>
+         </li>
+
+
         <li>
           <a href="#">
             <FaChartBar className="icon" />

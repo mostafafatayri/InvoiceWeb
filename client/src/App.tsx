@@ -8,6 +8,9 @@ import Profile from "./Pages/Profile/Profile";
 import Sidebar from "./Components/SideBar/Sidebar";
 import Dashboard from "./Pages/Dashboard/DashBoard";
 import SignUp from "./Pages/Login/Sign";
+import Subscription from "./Pages/Subscription/Subscription";
+import AdminSubscription from "./Pages/AdminSubscription/AdminSubscription";
+import Invoices from "./Pages/Invoice/Invoices";
 
 const queryClient = new QueryClient();
 
@@ -48,7 +51,10 @@ const router = createBrowserRouter([
     children: [
       { path: "/home", element: <Home /> },
       { path: "/profile", element: <Profile /> },
-      { path: "/Dashboard", element: <Dashboard /> }
+      { path: "/Dashboard", element: <Dashboard /> },
+      {path:"/subscriptions",element:<Subscription/>},
+      { path: "/admin/subscribers", element: <AdminSubscription /> } ,
+      { path: "/admin/invoices", element: <Invoices /> } 
 
     ],
   },

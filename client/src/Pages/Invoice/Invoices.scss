@@ -1,0 +1,77 @@
+.invoices-page {
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+    margin-left: 250px; // Default when sidebar is open
+  
+    &.expanded {
+      margin-left: 80px; // When sidebar is collapsed
+    }
+  
+    h2 {
+      font-size: 24px;
+      color: #4a90e2;
+      margin-bottom: 20px;
+    }
+  
+    .top-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+  
+      .search-bar {
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 8px 10px;
+  
+        .search-icon {
+          color: #4a90e2;
+        }
+  
+        input {
+          border: none;
+          outline: none;
+          padding-left: 5px;
+        }
+      }
+  
+      .filter-btn, .new-invoice-btn {
+        background: #4a90e2;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+  
+        &:hover {
+          background: #357ab8;
+        }
+      }
+    }
+  
+    .invoice-table {
+      width: 100%;
+      border-collapse: collapse;
+  
+      th, td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+      }
+  
+      .status {
+        &.paid { color: green; }
+        &.pending { color: orange; }
+        &.overdue { color: red; }
+      }
+  
+      .actions {
+        display: flex;
+        gap: 10px;
+      }
+    }
+  }
+  
