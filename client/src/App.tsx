@@ -7,12 +7,17 @@ import { Home } from "./Pages/Home/Home";
 import Profile from "./Pages/Profile/Profile";
 import Sidebar from "./Components/SideBar/Sidebar";
 import Dashboard from "./Pages/Dashboard/DashBoard";
-import SignUp from "./Pages/Login/Sign";
+import SignUp from "./Pages/SignUp/Sign";
 import Subscription from "./Pages/Subscription/Subscription";
 import AdminSubscription from "./Pages/AdminSubscription/AdminSubscription";
 import Invoices from "./Pages/Invoice/Invoices";
-
+import ProtectedRoute from "./Utils/ProtectedRoute";
+import ForgotPassword from "./Pages/Login/ForgetPassword/ForgetPassword";
+import CheckEmail from "./Pages/Login/CheckEmail/CheckEmail";
+import PasswordChanged from "./Pages/Login/PasswordChanged/PasswordIsChanged";
+import ResetPassword from './Pages/Login/ResetPassword/ResetPassword'
 const queryClient = new QueryClient();
+
 
 // 🏠 Layout with Sidebar (for main pages)
 const MainLayout = () => {
@@ -51,10 +56,13 @@ const router = createBrowserRouter([
     children: [
       { path: "/home", element: <Home /> },
       { path: "/profile", element: <Profile /> },
-      { path: "/Dashboard", element: <Dashboard /> },
+       //{ path: "/Dashboard", element: <Dashboard /> },
+       // Inside your route definitions:
+      {path: "/dashboard",element: (<ProtectedRoute><Dashboard /></ProtectedRoute>),},
       {path:"/subscriptions",element:<Subscription/>},
       { path: "/admin/subscribers", element: <AdminSubscription /> } ,
-      { path: "/admin/invoices", element: <Invoices /> } 
+      { path: "/admin/invoices", element: <Invoices /> } , 
+     
 
     ],
   },
@@ -69,7 +77,16 @@ const router = createBrowserRouter([
     element: <AuthLayout />, // No Sidebar
     children: [{ index: true, element: <SignUp /> }],
     
+  }, 
+  {   path: "/forgot-password", 
+    element: <ForgotPassword/>
   }
+  , 
+  {   path: "/checkEmail", 
+    element: <CheckEmail/>
+  },
+  { path: "/passwordChnaged", element: <PasswordChanged /> } ,  // i need to make this onlyy accessbel if it was sent from the create pass
+  { path:"/reset-password", element:<ResetPassword /> } ,
 ]);
 
 function App() {
