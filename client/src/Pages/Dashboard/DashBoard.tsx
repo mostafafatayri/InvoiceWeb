@@ -1,7 +1,7 @@
 import React from "react";
 import { useUserState } from "../../Reducers/UserReducer/UserContext";
 import { Navigate } from "react-router-dom"; // ✅ Import Navigate
-import AdminDashboard from "../../Components/Dashboards/AdminDashboard";
+import AdminDashboard from "../../Components/Dashboards/AdminDashboard/AdminDashboard";
 import CustomerDashboard from "../../Components/Dashboards/CustomerDashboard";
 import AccountantDashboard from "../../Components/Dashboards/AccountantDashboard";
 import './Dashboard.scss'

@@ -55,7 +55,10 @@
         "canceled": "Canceled"
       },
       "buttons": {
-        "manage": "Manage"
+        "manage": "Manage",
+        "view":"View",
+        "edit":"Edit",
+        "delete":"Delete"
       }
     }
   },

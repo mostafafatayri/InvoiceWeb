@@ -53,9 +53,13 @@
           "pending": "معلق",
           "canceled": "ملغي"
         },
-        "buttons": {
-          "manage": "إدارة"
-        }
+       "buttons": {
+       "manage": "إدارة",
+       "view": "عرض",
+       "edit": "تعديل",
+       "delete": "حذف"
+      }
+
       }
     },
 

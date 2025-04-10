@@ -43,6 +43,7 @@ const SignUpForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const { confirmPassword, ...payload } = formData;
+    console.log(confirmPassword)//should emove this for latter:
     const response = await register(payload);
     if (response?.success) {
       alert("Registration successful!");
