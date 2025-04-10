@@ -4,6 +4,58 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { UserState } from "../../Reducers/UserReducer/UserReducer";
 
+
+
+
+interface RegisterData {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  profileType: string;
+  displayName: string;
+  legalName: string;
+  mobile: string;
+  phone: string;
+  jobPosition: string;
+  title: string;
+  website: string;
+  vatNumber: string;
+  street: string;
+  street2: string;
+  city: string;
+  state: string;
+  zip: string;
+  country: string;
+  companyLogo: string;
+  licenseNumber: string;
+}
+
+export const register = async (data: RegisterData) => {
+  try {
+    const response = await newRequest.post("/auth/register", data);
+    return {
+      success: true,
+      message: response.data?.message || "Registered successfully",
+    };
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error)) {
+      console.error("Error during registration:", error.response?.data || error.message);
+      return {
+        success: false,
+        message: error.response?.data?.message || "Registration failed",
+      };
+    } else {
+      console.error("Unexpected error:", error);
+      return {
+        success: false,
+        message: "An unexpected error occurred",
+      };
+    }
+  }
+};
+
+
 export const login = async (email: string, password: string) => {
   try {
     const response = await newRequest.post("/auth/login", {
@@ -58,6 +110,31 @@ export const login = async (email: string, password: string) => {
     }
   }
 };
+
+export const forgotPass = async (email: string) => {
+  try {
+    const response = await newRequest.post("/auth/forgot-password", { email });
+    return {
+      success: true,
+      message: response.data?.message || "Reset link sent successfully",
+    };
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error)) {
+      console.error("Error during sending ForgotPassword Link:", error.response?.data || error.message);
+      return {
+        success: false,
+        message: error.response?.data?.message || "Error",
+      };
+    } else {
+      console.error("Unexpected error:", error);
+      return {
+        success: false,
+        message: "An unexpected error occurred",
+      };
+    }
+  }
+};
+
 
 /*
 v2
