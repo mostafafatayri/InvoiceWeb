@@ -33,6 +33,15 @@ export const fetchAllUsers = async (): Promise<FetchUsersResponse> => {
     };
    } catch (error: unknown) {
     const axiosError = error as AxiosError<{ message: string }>;
+    const status = axiosError?.response?.status;
+
+    // 👉 Check if unauthorized
+    if (status === 401) {
+      alert("Session expired. Please log in again.");
+      localStorage.removeItem("accessToken"); // Optional: clear token
+      window.location.href = "/login"; // 🔁 Redirect
+    }
+
     return {
       success: false,
       data: [],
