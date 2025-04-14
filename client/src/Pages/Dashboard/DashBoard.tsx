@@ -7,7 +7,7 @@ import AccountantDashboard from "../../Components/Dashboards/AccountantDashboard
 import './Dashboard.scss'
 const DashboardDirector: React.FC = () => {
   const { state: user } = useUserState();
-
+   
   // ✅ Redirect to login if not authenticated
   if (!user.isAuthenticated) return <Navigate to="/login" replace />;
 

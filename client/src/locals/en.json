@@ -40,7 +40,7 @@
       "title": "Subscriber Management",
       "description": "Manage all subscribed users in the system.",
       "search_placeholder": "Search subscribers...",
-      "table": {
+      "table": { 
         "id": "ID",
         "name": "Name",
         "email": "Email",
@@ -48,6 +48,16 @@
         "status": "Status",
         "next_billing": "Next Billing Date",
         "actions": "Actions"
+      },
+      "Rolestable": {
+        "title":"Security and Roles Managment",
+        "titleDesc":"Manage all Roles of the  users in the system.",
+        "id": "ID",
+        "name": "Name",
+        "description": "Description",
+        "status": "Status",
+        "actions": "Actions",
+        "isSuperAdmin":"Is Super Admin"
       },
       "status": {
         "active": "Active",
@@ -58,7 +68,8 @@
         "manage": "Manage",
         "view":"View",
         "edit":"Edit",
-        "delete":"Delete"
+        "delete":"Delete",
+        "invite":"Invite"
       }
     }
   },

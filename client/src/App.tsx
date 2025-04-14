@@ -16,7 +16,11 @@ import ForgotPassword from "./Pages/Login/ForgetPassword/ForgetPassword";
 import CheckEmail from "./Pages/Login/CheckEmail/CheckEmail";
 import PasswordChanged from "./Pages/Login/PasswordChanged/PasswordIsChanged";
 import ResetPassword from './Pages/Login/ResetPassword/ResetPassword'
+import ProtectedRouteSuperAdmin from './Utils/OnlySuperAdmin';
+import RolePage from './Pages/SecurityRoles/SecurityRoles';
 const queryClient = new QueryClient();
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 // 🏠 Layout with Sidebar (for main pages)
@@ -34,6 +38,7 @@ const MainLayout = () => {
         <div className={`main-content ${isSidebarOpen ? "" : "expanded"}`}>
           <Outlet context={{ isSidebarOpen }} />
         </div>
+        <ToastContainer position="top-right" autoClose={3000} />
       </div>
     </QueryClientProvider>
   );
@@ -44,6 +49,7 @@ const AuthLayout = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
+      <ToastContainer position="top-right" autoClose={3000} />
     </QueryClientProvider>
   );
 };
@@ -59,9 +65,11 @@ const router = createBrowserRouter([
        //{ path: "/Dashboard", element: <Dashboard /> },
        // Inside your route definitions:
       {path: "/dashboard",element: (<ProtectedRoute><Dashboard /></ProtectedRoute>),},
+      
       {path:"/subscriptions",element:<Subscription/>},
       { path: "/admin/subscribers", element: <AdminSubscription /> } ,
       { path: "/admin/invoices", element: <Invoices /> } , 
+      {path: "/admin/roles",element:(<ProtectedRouteSuperAdmin><RolePage /></ProtectedRouteSuperAdmin>),}, //<RolePage /> }
      
 
     ],

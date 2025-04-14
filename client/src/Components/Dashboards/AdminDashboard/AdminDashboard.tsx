@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import {useNavigate} from "react-router-dom"
 import { useOutletContext } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./AdminSubscription.scss";
 import { FaCheckCircle, FaTimesCircle, FaSearch } from "react-icons/fa";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAllUsers, deleteUserById } from "../../../Services/AdminServices/AdminActions";
+import { fetchAllUsers, deleteUserById ,SendInvitationToUser} from "../../../Services/AdminServices/AdminActions";
 import type { FetchUsersResponse, BackendUser } from "../../../Services/AdminServices/AdminActions";
 
 interface Subscriber {  
@@ -29,7 +30,7 @@ const AdminSubscription: React.FC = () => {
   const [localSubscribers, setLocalSubscribers] = useState<Subscriber[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-
+  const navigate = useNavigate();
   const { data, isLoading, error } = useQuery<FetchUsersResponse>({
     queryKey: ["users"],
     queryFn: fetchAllUsers,
@@ -64,6 +65,20 @@ const toggleMenu = (id: number) => {
       alert(result.message);
     }
   };
+
+  //handleInvite
+
+  const handleInvite = async(email:string)=>{
+    const confirmDelete = window.confirm("Are you sure you want to invite  this user?");
+    if (!confirmDelete) return;
+    const result = await SendInvitationToUser(email);
+    if (result.success) {
+      alert("User invited  successfully.");   
+    } else {
+      alert(result.message);
+    }
+
+  }
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -103,6 +118,12 @@ const toggleMenu = (id: number) => {
           />
         </div>
       </div>
+  
+      <div className="top-actions">
+        <button className="security-btn" onClick={() => navigate('/admin/roles')}>
+          Security & Roles
+        </button>
+       </div>
 
       {isLoading ? (
         <p>Loading users...</p>
@@ -148,6 +169,12 @@ const toggleMenu = (id: number) => {
                           <button onClick={() => console.log("View", subscriber)}>{t("admin.subscription.buttons.view")}</button>
                           <button onClick={() => console.log("Edit", subscriber)}>{t("admin.subscription.buttons.edit")}</button>
                           <button onClick={() => handleDelete(subscriber.uuid)}>{t("admin.subscription.buttons.delete")}</button>
+                          {subscriber.status !== "Active" && (
+                             <button onClick={() => handleInvite(subscriber.email)}>
+                             {t("admin.subscription.buttons.invite")}
+                             </button>
+                            )}
+                       
                         </div>
                       )}
                     </td>
