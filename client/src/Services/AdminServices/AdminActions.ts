@@ -14,7 +14,20 @@ export interface FetchzRolesResponse {
   data: Roles[];
   message?: string;
 }
+export interface BackendUser {
+  id:string,
+  firstName: string;
+  lastName: string;
+  email: string;
+  isActive: boolean;
+}
 
+export interface FetchUsersResponse {
+    success: boolean;
+    data: BackendUser[];
+    message?: string;
+  }
+  
 export const fetchAllRoles = async (): Promise<FetchzRolesResponse> => {
   try {
     const token = localStorage.getItem("accessToken");
@@ -48,24 +61,8 @@ console.log(res.data);
   }
 }
 
-///
 
-export interface BackendUser {
-  id:string,
-  firstName: string;
-  lastName: string;
-  email: string;
-  isActive: boolean;
-}
 
-export interface FetchUsersResponse {
-    success: boolean;
-    data: BackendUser[];
-    message?: string;
-  }
-  
-
-/// this is the function, it will be performed and will be store in the FetchUsersResponse
 export const fetchAllUsers = async (): Promise<FetchUsersResponse> => {
   try {
     const token = localStorage.getItem("accessToken");
@@ -101,9 +98,6 @@ export const fetchAllUsers = async (): Promise<FetchUsersResponse> => {
 
 
 
-
-
-// continue here 
 export const deleteUserById = async (id: string) => {
   try {
     const token = localStorage.getItem("accessToken");
@@ -148,31 +142,62 @@ export const SendInvitationToUser = async (email: string) => {
 };
 
 
-
-/*import newRequest from "../../Utils/newRequest";
-
-
-export const fetchAllUsers = async () => {
+///
+export const deleteRoleById = async (id: string) => {
   try {
-    const token = localStorage.getItem("accessToken"); // Get token from storage
+    const token = localStorage.getItem("accessToken");
+    console.log("the uuid : "+id);
 
-    const response = await newRequest.get(`/users`, {
+    const res = await newRequest.delete(`/roles/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
-        Accept: "application/json",
       },
     });
 
-    console.log("Fetched users:", response.data); // 👀 Just log for now
-    return {
-      success: true,
-      data: response.data,
-    };
+    return { success: true, status: res.status };
   } catch (error) {
-    console.error("Failed to fetch users:", error);
-    return {
-      success: false,
-      message: "Failed to fetch users",
-    };
+    console.error("Delete error:", error);
+    return { success: false, message: "Failed to delete role" };
   }
-};*/
+};
+
+export const UpdateRoleById = async(id:string,name:string)=>{
+  try {
+    const token = localStorage.getItem("accessToken");
+    //console.log("the uuid : "+id);
+//alert("from the service check")
+    const res = await newRequest.patch(`/roles/${id}`,
+      { name:name }, {
+
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return { success: true, status: res.status };
+  } catch (error) {
+    console.error("update error:", error);
+    return { success: false, message: "Failed to update role" };
+  }
+
+}
+export const addRole=async(newRole:string)=>{
+  try {
+    const token = localStorage.getItem("accessToken");
+    console.log("the new role is "+newRole);
+    //console.log("the uuid : "+id);
+//alert("from the service check")
+    const res = await newRequest.post(`/roles`,
+      { name:newRole }, {
+
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return { success: true, status: res.status };
+  } catch (error) {
+    console.error("update error:", error);
+    return { success: false, message: "Failed to update role" };
+  }
+}
