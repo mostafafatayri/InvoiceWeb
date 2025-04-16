@@ -2,6 +2,21 @@ import newRequest from "../../Utils/newRequest";
 import  { AxiosError } from "axios"; // ✅ Add AxiosError here
 
 
+export interface FetchClaimsResponse {
+  success: boolean;
+  data: Roles[];
+  message?: string;
+}
+
+export interface Claims{
+  id:string,
+  name:string,
+  description:string,
+ 
+  createdAt:string
+}
+
+//above 
 export interface Roles{
   id:string,
   name:string,
@@ -14,6 +29,8 @@ export interface FetchzRolesResponse {
   data: Roles[];
   message?: string;
 }
+
+
 export interface BackendUser {
   id:string,
   firstName: string;
@@ -201,3 +218,76 @@ export const addRole=async(newRole:string)=>{
     return { success: false, message: "Failed to update role" };
   }
 }
+
+//addClaim
+export const addClaim=async(newClaim:string)=>{
+  try {
+    const token = localStorage.getItem("accessToken");
+    console.log("the new role is "+newClaim);
+    //console.log("the uuid : "+id);
+//alert("from the service check")
+    const res = await newRequest.post(`/claims`,
+      { name:newClaim }, {
+
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return { success: true, status: res.status };
+  } catch (error) {
+    console.error("update error:", error);
+    return { success: false, message: "Failed to update role" };
+  }
+}
+export const fetchAllClaims = async (): Promise<FetchClaimsResponse> => {
+  try {
+    const token = localStorage.getItem("accessToken");
+
+    const res = await newRequest.get("/claims", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+console.log(res.data);
+    return {
+      success: true,
+      data: res.data,
+    };
+   } catch (error: unknown) {
+    const axiosError = error as AxiosError<{ message: string }>;
+    const status = axiosError?.response?.status;
+
+    // 👉 Check if unauthorized
+    if (status === 401) {
+      alert("Session expired. Please log in again.");
+      localStorage.removeItem("accessToken"); // Optional: clear token
+      window.location.href = "/login"; // 🔁 Redirect
+    }
+
+    return {
+      success: false,
+      data: [],
+      message: axiosError?.response?.data?.message || "Something went wrong",
+    };
+  }
+}
+
+
+export const deleteClaimById = async (id: string) => {
+  try {
+    const token = localStorage.getItem("accessToken");
+    console.log("the uuid : "+id);
+
+    const res = await newRequest.delete(`/claims/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return { success: true, status: res.status };
+  } catch (error) {
+    console.error("Delete error:", error);
+    return { success: false, message: "Failed to delete role" };
+  }
+};
