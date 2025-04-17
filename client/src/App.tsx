@@ -18,6 +18,7 @@ import PasswordChanged from "./Pages/Login/PasswordChanged/PasswordIsChanged";
 import ResetPassword from './Pages/Login/ResetPassword/ResetPassword'
 import ProtectedRouteSuperAdmin from './Utils/OnlySuperAdmin';
 import RolePage from './Pages/SecurityRoles/SecurityRoles';
+import FetchARole from './Pages/FetchRoleData/FetchARole'
 const queryClient = new QueryClient();
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -70,6 +71,7 @@ const router = createBrowserRouter([
       { path: "/admin/subscribers", element: <AdminSubscription /> } ,
       { path: "/admin/invoices", element: <Invoices /> } , 
       {path: "/admin/roles",element:(<ProtectedRouteSuperAdmin><RolePage /></ProtectedRouteSuperAdmin>),}, //<RolePage /> }
+      {path: "/admin/roles/:id",element:(<ProtectedRouteSuperAdmin><FetchARole /></ProtectedRouteSuperAdmin>),},
      
 
     ],

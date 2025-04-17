@@ -1,20 +1,74 @@
 import newRequest from "../../Utils/newRequest";
 import  { AxiosError } from "axios"; // ✅ Add AxiosError here
 
+///
+export interface Claims {
+  id: string;
+  name: string;
+  description: string;
+  createdAt: string;
+ // updatedAt: string;
+}
 
+export interface RoleWithClaims {
+  id: string;
+  name: string;
+  description: string | null;
+  isSuperAdmin: boolean;
+  createdAt: string;
+  updatedAt: string;
+  claims: Claims[];
+}
+
+export interface FetchzRoleResponse {
+  success: boolean;
+  status: number;
+  data: RoleWithClaims;
+  message?: string;
+}
+
+///// 
+export const FetchARoleById = async (id: string): Promise<FetchzRoleResponse> => {
+  try {
+    const token = localStorage.getItem("accessToken");
+
+    const res = await newRequest.get(`/roles/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return {
+      success: true,
+      status: res.status,
+      data: res.data, // 👈 must return actual data from API
+    };
+  } catch (error) {
+    console.error("Error Fetching Role Data :", error);
+    return {
+      success: false,
+      status: 500,
+      data: {} as RoleWithClaims, // 👈 fallback if needed
+      message: "Failed to Fetch Data",
+    };
+  }
+};
+
+
+////
 export interface FetchClaimsResponse {
   success: boolean;
   data: Roles[];
   message?: string;
 }
 
-export interface Claims{
+/*export interface Claims{
   id:string,
   name:string,
   description:string,
  
   createdAt:string
-}
+}*/
 
 //above 
 export interface Roles{
@@ -291,3 +345,6 @@ export const deleteClaimById = async (id: string) => {
     return { success: false, message: "Failed to delete role" };
   }
 };
+
+
+

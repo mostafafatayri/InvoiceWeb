@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./SecurityRoles.scss";
 import { FaCheckCircle, FaTimesCircle, FaSearch } from "react-icons/fa";
@@ -15,7 +15,7 @@ interface Role {
   name: string;
   description:string,
   isSuperAdmin: string;
- 
+  
 }
 interface Claim {  
   id: number;
@@ -49,6 +49,7 @@ const RolePage: React.FC = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [editingRowId, setEditingRowId] = useState<string | null>(null);
   const [editedName, setEditedName] = useState<string>("");
+  const navigate = useNavigate()
   
   const { data, isLoading, error } = useQuery<FetchzRolesResponse>({
     queryKey: ["Roles"],
@@ -198,8 +199,8 @@ const filteredData = showRole
                   <th>{t("admin.subscription.Rolestable.description")}</th>
 
                   {showRole && (
-      <th>{t("admin.subscription.Rolestable.isSuperAdmin")}</th>
-    )}
+        <th>{t("admin.subscription.Rolestable.isSuperAdmin")}</th>
+      )}
                  
                   <th>{t("admin.subscription.Rolestable.actions")}</th>
                   <th>  <button
@@ -287,9 +288,15 @@ const filteredData = showRole
                <FaPen />
               </button>
              )}
-            <button className="icon-btn view" onClick={() => console.log("View", subscriber)}>
+            <button
+            className="icon-btn view"
+            onClick={() => navigate(`/admin/roles/${subscriber.uuid}`, {
+            state: { claims: claims} // pass your role or claims or anything here
+            })}
+            >
             <FaEye />
             </button>
+
             <button className="icon-btn delete" onClick={() => HandleRoleDelete(subscriber.uuid)}>
             <FaTrash />
             </button>

@@ -41,6 +41,15 @@
       "description": "Manage all subscribed users in the system.",
       "search_placeholder": "Search subscribers...",
       "searchRole_placeholder": "Search roles...",
+      "searchRole_A_Role": "Search claims...",
+      "claims":{
+        "id": "ID",
+        "claim":"Claim",
+        "description": "Description",
+        "createAt": "Created At",
+        "modifiedAt":"Modified At"
+        
+      },
       "table": { 
         "id": "ID",
         "name": "Name",
