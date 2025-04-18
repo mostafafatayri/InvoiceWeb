@@ -347,4 +347,20 @@ export const deleteClaimById = async (id: string) => {
 };
 
 
+export const UpdateRole = async (roleID: string, body: { claimIds: string[] }) => {
+  try {
 
+    
+    const token = localStorage.getItem("accessToken");
+    const res = await newRequest.post(`/acl/roles/${roleID}/assign-claims`, body, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return { success: true, status: res.status };
+  } catch (error) {
+    console.error("update error:", error);
+    return { success: false, message: "Failed to update role" };
+  }
+};
